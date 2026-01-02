@@ -1,0 +1,31 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th,
+td,
+caption {
+  border: 1px solid rgb(0, 0, 0);
+  text-align: center;
+}
+caption {
+  border-bottom: none;
+  font-weight: 700;
+}
+.output {
+  color: red;
+}
+.holiday,
+output.holiday {
+  background-color: brown;
+  color: white;
+}
+
+#today {
+  background-color: black;
+}
+.output.end {
+  text-align: start;
+  padding-left: 5px;
+}
