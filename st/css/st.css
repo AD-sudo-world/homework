@@ -1,0 +1,44 @@
+body {
+  box-sizing: border-box;
+}
+
+article {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 0 15px;
+  color: rgba(83, 87, 85, 1);
+}
+.article-title {
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+  max-width: 596px;
+  font-size: 48px;
+  color: rgba(44, 51, 47, 1);
+  margin: 0 0 40px 0;
+}
+.article-text {
+  margin-bottom: 20px;
+}
+.mb {
+  margin-bottom: 80px;
+}
+.article-title.h2 {
+  font-size: 36px;
+  margin: 0;
+  padding: 0;
+}
+.section {
+  width: 744px;
+}
+ul li::marker {
+  color: rgba(53, 150, 237, 1);
+}
+li {
+  line-height: 1.7;
+}
+.margin {
+  margin: 40px 0;
+}
