@@ -1,47 +1,124 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body{
     font-family: sans-serif;
     font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+body::after{
+    content: url(./fon.jpg);
+    position: absolute;
+    z-index: -1;
+    transform: scale(0.5);
 }
 
-fieldset{
-    width: 250px;
-    border-radius: 10px;
-    padding: 15px;
-    border: 1px solid black;
-    
+form{
+    margin: 0;
+    max-width: 350px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 3px;
+    background: linear-gradient(247deg,rgba(42, 123, 155, 0.77) 30%, rgba(87, 199, 133, 0.72) 61%, rgba(237, 221, 83, 0.7) 91%);
+    box-shadow: 5px 8px 10px #608c93; 
 }
-h1{
-    font-size: 15px;
-    margin: 0 0 8px 0;
+.form-fieldset{
+    border: none;   
+}
+.name{
+    margin-top: 0;
+    font-size: 18px;
+    color: aliceblue;
+    text-transform: uppercase;
+    text-align: center;
 }
 .inForm{
-    display: block;
+    
     margin: 5px 0;
-    width: 200px;
-    height: 20px;
+    width: 100%;
+    height: 40px;
     padding-left: 8px;
-    border-radius: 5px;
-    border: 1px solid black;
+    border-radius: 3px;
+    line-height: 40px;
+    background-image: linear-gradient(98deg,rgba(42, 123, 155, 0.57) 30%, rgba(87, 199, 133, 0.54) 61%, rgba(237, 221, 83, 0.57) 91%);
+    color: aliceblue;
+    border: none;
+    transition: background-image 5ms, transform 0.2s;
+    
 }
 label{
-    display: block;
-    margin-top: 5px;
+    margin-top: 10px;
+}
+.inForm:hover{
+    transform: translateX(10px);
+    background-image: linear-gradient(98deg,rgba(42, 123, 155, 1) 30%, rgba(87, 199, 133, 1) 61%, rgba(237, 221, 83, 1) 91%);
+}
+.inForm:focus{
+    background-image: linear-gradient(98deg,rgba(42, 123, 155, 1) 30%, rgba(87, 199, 133, 1) 61%, rgba(237, 221, 83, 1) 91%);
+}
+.inForm:valid{
+    background-image: linear-gradient(98deg,rgba(42, 123, 155, 1) 30%, rgba(87, 199, 133, 1) 61%, rgba(237, 221, 83, 1) 91%);
 }
 
 textarea.inForm{
-    width: 200px;
-    max-height: 200px;
-    min-height: 30px;
-    resize: vertical;
     
+    width: 100%;
+    max-height: 200px;
+    min-height: 40px;
+    resize: vertical;
 }
+textarea.inForm::placeholder{
+    line-height: 1.5;
+    padding-top: 6px;
+}
+
+::placeholder{
+    color: aliceblue;
+}
+
 button {
-    display: block;
-    margin: 5px 0 0 0;
+    border: none;
+    border-radius: 3px;
+    margin: 20px 0 0 0;
+    width: 100%;
+    height: 40px;
     cursor: pointer;
+    background: rgba(42, 123, 155, 0.498) ;
+    color: aliceblue;
+    transition: transform 0.5s, background-color 0.3s;
 }
-input.flag{
-    display: inline-block;
+button:hover{
+    transform: scale(1.05);
+    background-color: rgb(42, 123, 155) ;
+}
+.label-checkbox{
+    display: block;
+    color: aliceblue;
+    /* margin-top: 15px; */
+    padding-left: 30px;
+}
+.flag{
     cursor: pointer;
-    margin-top: 8px;
+    appearance: none;
+    position: absolute;
+    outline: none;
+    position: relative;
+}
+
+input.flag::after{
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border: 0.5px solid rgba(237, 221, 83, 1);
+    border-radius: 1px;   
+}
+.flag:checked::after{
+    background: url(./reshot-icon-checklist-RY6SD5HNFA.svg) no-repeat center, rgba(237, 221, 83, 1);
 }

@@ -3,15 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./normalize.css">
     <link rel="stylesheet" href="./form.css" />
     <title>Document</title>
   </head>
   <body>
     <form>
-      <fieldset>
-        <h1>Ваши личные данные</h1>
+      
+      <fieldset class="form-fieldset">
+        <h1 class="name">Ваши личные данные</h1>
         <label
-          >Ваше имя
+          >
           <input
             type="text"
             required
@@ -21,7 +23,7 @@
             class="inForm"
         /></label>
         <label
-          >Ваш возраст
+          >
           <input
             type="number"
             placeholder="Возраст"
@@ -31,7 +33,7 @@
             class="inForm"
         /></label>
         <label
-          >Ваш номер телефона
+          >
           <input
             type="tel"
             placeholder="Номер телефона"
@@ -41,7 +43,7 @@
             class="inForm"
         /></label>
         <label
-          >Ваша почта
+          >
           <input
             type="email"
             placeholder="Почта"
@@ -51,7 +53,7 @@
             class="inForm"
         /></label>
         <label
-          >Сообщение
+          >
           <textarea
             name="massange"
             id="massange"
@@ -60,15 +62,15 @@
             class="inForm"
           ></textarea>
         </label>
-        <label>
+        <label class="checkbox">
           <input
             type="checkbox"
             required
             name="true"
             value="true"
             class="flag"
-          />
-          Я принимаю правила</label
+          /><span class="label-checkbox">
+          Я соглашаюсь на обработку своих персональных данных</span></label
         >
         <button type="submit">Отправить</button>
       </fieldset>
