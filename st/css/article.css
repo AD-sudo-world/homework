@@ -1,0 +1,63 @@
+
+article {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  max-width: 1220px;
+  margin: 0 auto;
+  color: rgba(83, 87, 85, 1);
+}
+.article-title {
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+  max-width: 596px;
+  font-size: 48px;
+  color: rgba(44, 51, 47, 1);
+  margin: 0 0 40px 0;
+}
+.article-text {
+  margin-bottom: 20px;
+}
+.mb {
+  margin-bottom: 80px;
+}
+.article-title.h2 {
+  font-size: 36px;
+  margin: 0;
+  padding: 0;
+}
+.section {
+  width: 744px;
+}
+ul li::marker {
+  color: rgba(53, 150, 237, 1);
+  list-style: 15px;
+}
+li {
+  line-height: 1.7;
+}
+.margin {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+.container-position {
+  position: relative;
+}
+
+.decor-1::before {
+  content: url(../content/декор.svg);
+  position: absolute;
+  left: -350px;
+  top: 100px;
+  z-index: -1;
+}
+.decor-2::after {
+  content: url(../content/декор.svg);
+  position: absolute;
+  right: -350px;
+  top: 400px;
+  z-index: -1;
+}
+/* footer{
+  margin-top: 120px;
+} */
