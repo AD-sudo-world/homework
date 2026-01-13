@@ -1,3 +1,137 @@
-body{
-    overflow-x: hidden;
+.section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 140px;
+}
+.hero-container {
+  max-width: 1220px;
+  width: 100%;
+  height: 513px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-section {
+  max-width: 492px;
+  width: 100%;
+  min-height: 316px;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section-title {
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+  font-size: 62px;
+  line-height: 115%;
+  text-transform: uppercase;
+  color: rgba(44, 51, 47, 1);
+}
+.section-text {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: rgba(83, 87, 85, 1);
+}
+
+.button {
+  width: 270px;
+  height: 57px;
+  margin-top: 100px;
+  padding: 19px 32px;
+  font-family: Ubuntu, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 130%;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: rgba(53, 150, 237, 1);
+}
+.right-section {
+  display: flex;
+  position: relative;
+}
+.right-section::before {
+  content: url(../content/img/выбор.svg);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 40px;
+}
+.hero {
+  position: relative;
+}
+.hero::before {
+  content: "";
+  background: url(../content/декор-lkbyysq.svg);
+  position: absolute;
+  z-index: -1;
+  top: 359px;
+  width: 100%;
+  height: 48px;
+}
+
+.news-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.news-container{
+  max-width: 1220px;
+  width: 100%;
+  height: 437px;
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+}
+.section-title{
+  display: block;
+  margin-bottom: 40px;
+}
+.card {
+  width: 286px;
+  height: 342px;
+  border: 1px solid rgba(211, 203, 217, 1);
+}
+.img-news {
+  display: block;
+  overflow: hidden;
+  z-index: -1;
+}
+.news-info {
+  margin: 20px 20px 12px 20px;
+  width: 244px;
+}
+.time {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(133, 142, 138, 1);
+  display: block;
+  margin-bottom: 13px;
+}
+.news-info-title {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: rgba(44, 51, 47, 1);
+}
+.footer-card {
+  padding: 0px 20px 20px 20px;
+}
+.link-footer-card {
+  display: block;
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: rgba(53, 150, 237, 1);
 }

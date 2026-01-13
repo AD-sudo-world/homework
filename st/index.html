@@ -3,11 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/fonts.css">
-    <link rel="stylesheet" href="./css/globlas.css">
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="icon"  type="image/svg+xml" sizes="128x128" href="./content/favicon-icon.svg">
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/globlas.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      sizes="128x128"
+      href="./content/favicon-icon.svg"
+    />
     <title>Главная</title>
   </head>
   <body>
@@ -22,41 +27,120 @@
         </div>
       </div>
     </header>
-    <div class="hero-container">
-        <div class="hero-left">
-            <h1>Подтянутое тело за месяц тренировок</h1>
-            <p>Программа тренировки включает в себя разнообразные упражнения, направленные на развитие силы и мышечного тонуса.</p>
-            <button>Посмотреть программу</button>
+
+    <section class="hero section">
+      <div class="hero-container">
+        <div class="left-section">
+          <h1 class="section-title">
+            Подтянутое тело
+            <p style="color: rgba(53, 150, 237, 1)">за месяц</p>
+            тренировок
+          </h1>
+          <p class="section-text">
+            Программа тренировки включает в&nbsp;себя разнообразные упражнения,
+            направленные на&nbsp;развитие силы и&nbsp;мышечного&nbsp;тонуса.
+          </p>
+          <a href="#" class="button">Посмотреть программу</a>
         </div>
-        <div class="hero-right"></div>
-    </div>
-    <h2>Последние новости</h2>
-    <div class="hero-new-container">
-    <div class="card-one">
-        <img src="" alt="">
-        <p class="date">19.04.2024</p>
-        <p>Открытие нового филиала в центре города</p>
-        <a href="#">Подробнее</a>
-    </div>
-    <div class="card-one">
-        <img src="" alt="">
-        <p class="date">19.04.2024</p>
-        <p>Открытие нового филиала в центре города</p>
-        <a href="#">Подробнее</a>
-    </div>
-    <div class="card-one">
-        <img src="" alt="">
-        <p class="date">19.04.2024</p>
-        <p>Открытие нового филиала в центре города</p>
-        <a href="#">Подробнее</a>
-    </div>
-    <div class="card-one">
-        <img src="" alt="">
-        <p class="date">19.04.2024</p>
-        <p>Открытие нового филиала в центре города</p>
-        <a href="#">Подробнее</a>
-    </div>
-          <footer class="footer">
+        <div class="right-section">
+          <img src="./content/img/girl.png" alt="" />
+          <img src="./content/img/man.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <section class="news-section">
+      <div class="new-section-container">
+        <h2 class="section-title">Последние новости</h2>
+        <div class="news-container">
+          <article class="card">
+            <header class="header-card">
+              <img
+                src="./content/img/card-1.jpg"
+                alt="Велодорожки в спортивном зале"
+                width="284"
+                height="203"
+                class="img-news"
+              />
+            </header>
+            <div class="news-info">
+              <time datetime="2024.04.19" class="time">19.04.2024</time>
+              <h3 class="news-info-title">
+                Открытие нового филиала в центре города!
+              </h3>
+            </div>
+            <footer class="footer-card">
+              <a href="article.html" class="link-footer-card">Подробнее</a>
+            </footer>
+          </article>
+
+          <article class="card">
+            <header class="header-card">
+              <img
+                src="./content/img/card-2.jpg"
+                alt="Велодорожки в спортивном зале"
+                width="284"
+                height="203"
+                class="img-news"
+              />
+            </header>
+            <div class="news-info">
+              <time datetime="2024.04.19" class="time">19.04.2024</time>
+              <h3 class="news-info-title">
+                Запуск новой программы тренировок для начинающих
+              </h3>
+            </div>
+            <footer class="footer-card">
+              <a href="article.html" class="link-footer-card">Подробнее</a>
+            </footer>
+          </article>
+
+          <article class="card">
+            <header class="header-card">
+              <img
+                src="./content/img/card-3.jpg"
+                alt="Велодорожки в спортивном зале"
+                width="284"
+                height="203"
+                class="img-news"
+              />
+            </header>
+            <div class="news-info">
+              <time datetime="2024.04.19" class="time">19.04.2024</time>
+              <h3 class="news-info-title">
+                Специальное предложение для студентов и школьников
+              </h3>
+            </div>
+            <footer class="footer-card">
+              <a href="article.html" class="link-footer-card">Подробнее</a>
+            </footer>
+          </article>
+
+          <article class="card">
+            <header class="header-card">
+              <img
+                src="./content/img/card-4.jpg"
+                alt="Велодорожки в спортивном зале"
+                width="284"
+                height="203"
+                class="img-news"
+              />
+            </header>
+            <div class="news-info">
+              <time datetime="2024.04.19" class="time">19.04.2024</time>
+              <h3 class="news-info-title">
+                Открыт конкурс на лучший фитнес-челлендж
+              </h3>
+            </div>
+            <footer class="footer-card">
+              <a href="article.html" class="link-footer-card">Подробнее</a>
+            </footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
       <div class="container-footer">
         <div class="logo"><img src="./content/logo.svg" alt="Логотип" /></div>
         <div class="list-contacts">
