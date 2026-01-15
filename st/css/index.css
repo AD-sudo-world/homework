@@ -51,6 +51,10 @@
   color: #fff;
   background-color: rgba(53, 150, 237, 1);
 }
+.button:hover {
+  color: #fff;
+  background-color: rgb(47, 136, 213);
+}
 .right-section {
   display: flex;
   position: relative;
@@ -74,38 +78,44 @@
   width: 100%;
   height: 48px;
 }
-
+/* -------------------------------Новости------------------------ */
 .news-section {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 140px;
 }
-.news-container{
+.news-container {
   max-width: 1220px;
   width: 100%;
-  height: 437px;
   display: flex;
   flex-direction: row;
   gap: 28px;
 }
-.section-title{
+.section-title.mg {
   display: block;
   margin-bottom: 40px;
 }
 .card {
   width: 286px;
-  height: 342px;
+  min-height: 342px;
   border: 1px solid rgba(211, 203, 217, 1);
+  display: flex;
+  flex-direction: column;
+}
+.header-card {
+  overflow: hidden;
 }
 .img-news {
   display: block;
-  overflow: hidden;
-  z-index: -1;
 }
 .news-info {
-  margin: 20px 20px 12px 20px;
-  width: 244px;
+  padding: 20px 20px 0;
+  margin-bottom: 12px;
+  width: 100%; /* изменяем на 100% */
+  box-sizing: border-box; /* чтобы padding не увеличивал ширину */
+  flex-grow: 1; /* важное свойство - растягивается */
 }
 .time {
   font-family: Ubuntu, sans-serif;
@@ -115,7 +125,7 @@
   text-transform: uppercase;
   color: rgba(133, 142, 138, 1);
   display: block;
-  margin-bottom: 13px;
+  margin-bottom: 8px;
 }
 .news-info-title {
   font-family: Ubuntu, sans-serif;
@@ -125,13 +135,93 @@
   color: rgba(44, 51, 47, 1);
 }
 .footer-card {
-  padding: 0px 20px 20px 20px;
+  padding: 0 20px 20px 20px;
+  margin-top: auto; /* прижимает футер вниз */
 }
 .link-footer-card {
-  display: block;
+  display: inline-block;
   font-family: Ubuntu, sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 130%;
   color: rgba(53, 150, 237, 1);
+}
+.link-footer-card::after {
+  content: "";
+  display: inline-block;
+  margin-left: 8px;
+  width: 22px;
+  height: 9px;
+  background-image: url(../content/стрелка.svg);
+  transition: transform 0.2s;
+}
+.link-footer-card:hover::after {
+  transform: translateX(5px);
+}
+/* ----------------------------FAQ---------------- */
+.section-faq {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.container-section-faq {
+  max-width: 1220px;
+  width: 100%;
+}
+.container-faq {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+}
+summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.summary-title {
+  font-family: Oswald, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 115%;
+  text-transform: uppercase;
+  color: rgba(44, 51, 47, 1);
+}
+summary::after {
+  display: inline-block;
+  content: "";
+  background: url(../content/стрелка-вниз.svg), no-repeat;
+  width: 17px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+details {
+  margin-bottom: 20px;
+  border-block: 1px solid rgba(211, 203, 217, 1);
+}
+
+details > p {
+  padding: 0 20px 20px;
+}
+.section-faq::before {
+  content: "";
+  height: 48px;
+  background: url(../content/lkbyyysq-ltrjh.svg) repeat-x;
+  position: absolute;
+  z-index: -1;
+  top: 215px;
+  left: -60%;
+  width: 100%;
+  
 }
