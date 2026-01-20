@@ -1,15 +1,18 @@
 .section {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
   margin-bottom: 140px;
 }
 .hero-container {
-  max-width: 1220px;
-  width: 100%;
-  height: 513px;
+  min-height: 513px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  width: 100%;
 }
 
 .left-section {
@@ -26,6 +29,14 @@
   font-family: Oswald, sans-serif;
   font-weight: 600;
   font-size: 62px;
+  line-height: 115%;
+  text-transform: uppercase;
+  color: rgba(44, 51, 47, 1);
+}
+.section-title-h2 {
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+  font-size: 48px;
   line-height: 115%;
   text-transform: uppercase;
   color: rgba(44, 51, 47, 1);
@@ -66,39 +77,36 @@
   transform: translateX(-50%);
   top: 40px;
 }
-.hero {
+/* .hero {
   position: relative;
-}
-.hero::before {
+} */
+.hero-container::before {
   content: "";
   background: url(../content/декор-lkbyysq.svg);
   position: absolute;
   z-index: -1;
   top: 359px;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
   height: 48px;
 }
 /* -------------------------------Новости------------------------ */
 .news-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
   margin-bottom: 140px;
 }
 .news-container {
-  max-width: 1220px;
-  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 28px;
+  width: 100%;
 }
-.section-title.mg {
-  display: block;
-  margin-bottom: 40px;
-}
+
 .card {
-  width: 286px;
+  width: calc((100% - 84px) / 4); 
   min-height: 342px;
   border: 1px solid rgba(211, 203, 217, 1);
   display: flex;
@@ -160,14 +168,12 @@
 }
 /* ----------------------------FAQ---------------- */
 .section-faq {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
 }
 .container-section-faq {
-  max-width: 1220px;
-  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 .container-faq {
   display: flex;
@@ -221,7 +227,8 @@ details > p {
   position: absolute;
   z-index: -1;
   top: 215px;
-  left: -60%;
-  width: 100%;
-  
+  width: calc(50% - 250px);
+}
+.mg {
+  margin-bottom: 40px;
 }
