@@ -1,0 +1,234 @@
+.section {
+  /* display: flex;
+  justify-content: center; */
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-bottom: 140px;
+}
+.hero-container {
+  min-height: 513px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.left-section {
+  max-width: 492px;
+  width: 100%;
+  min-height: 316px;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.section-title {
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+  font-size: 62px;
+  line-height: 115%;
+  text-transform: uppercase;
+  color: rgba(44, 51, 47, 1);
+}
+.section-title-h2 {
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 115%;
+  text-transform: uppercase;
+  color: rgba(44, 51, 47, 1);
+}
+.section-text {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: rgba(83, 87, 85, 1);
+}
+
+.button {
+  width: 270px;
+  height: 57px;
+  margin-top: 100px;
+  padding: 19px 32px;
+  font-family: Ubuntu, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 130%;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: rgba(53, 150, 237, 1);
+}
+.button:hover {
+  color: #fff;
+  background-color: rgb(47, 136, 213);
+}
+.right-section {
+  display: flex;
+  position: relative;
+}
+.right-section::before {
+  content: url(../content/img/выбор.svg);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 40px;
+}
+/* .hero {
+  position: relative;
+} */
+.hero-container::before {
+  content: "";
+  background: url(../content/декор-lkbyysq.svg);
+  position: absolute;
+  z-index: -1;
+  top: 359px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 48px;
+}
+/* -------------------------------Новости------------------------ */
+.news-section {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-bottom: 140px;
+}
+.news-container {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  width: 100%;
+}
+
+.card {
+  width: calc((100% - 84px) / 4); 
+  min-height: 342px;
+  border: 1px solid rgba(211, 203, 217, 1);
+  display: flex;
+  flex-direction: column;
+}
+.header-card {
+  overflow: hidden;
+}
+.img-news {
+  display: block;
+}
+.news-info {
+  padding: 20px 20px 0;
+  margin-bottom: 12px;
+  width: 100%; /* изменяем на 100% */
+  box-sizing: border-box; /* чтобы padding не увеличивал ширину */
+  flex-grow: 1; /* важное свойство - растягивается */
+}
+.time {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(133, 142, 138, 1);
+  display: block;
+  margin-bottom: 8px;
+}
+.news-info-title {
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: rgba(44, 51, 47, 1);
+}
+.footer-card {
+  padding: 0 20px 20px 20px;
+  margin-top: auto; /* прижимает футер вниз */
+}
+.link-footer-card {
+  display: inline-block;
+  font-family: Ubuntu, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: rgba(53, 150, 237, 1);
+}
+.link-footer-card::after {
+  content: "";
+  display: inline-block;
+  margin-left: 8px;
+  width: 22px;
+  height: 9px;
+  background-image: url(../content/стрелка.svg);
+  transition: transform 0.2s;
+}
+.link-footer-card:hover::after {
+  transform: translateX(5px);
+}
+/* ----------------------------FAQ---------------- */
+.section-faq {
+  position: relative;
+}
+.container-section-faq {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.container-faq {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+}
+summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  cursor: pointer;
+  user-select: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+.summary-title {
+  font-family: Oswald, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 115%;
+  text-transform: uppercase;
+  color: rgba(44, 51, 47, 1);
+}
+summary::after {
+  display: inline-block;
+  content: "";
+  background: url(../content/стрелка-вниз.svg), no-repeat;
+  width: 17px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+details {
+  margin-bottom: 20px;
+  border-block: 1px solid rgba(211, 203, 217, 1);
+}
+
+details > p {
+  padding: 0 20px 20px;
+}
+.section-faq::before {
+  content: "";
+  height: 48px;
+  background: url(../content/lkbyyysq-ltrjh.svg) repeat-x;
+  position: absolute;
+  z-index: -1;
+  top: 215px;
+  width: calc(50% - 250px);
+}
+.mg {
+  margin-bottom: 40px;
+}
