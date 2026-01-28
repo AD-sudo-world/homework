@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -35,13 +35,12 @@
       <div class="hero-container">
         <div class="left-section">
           <h1 class="section-title">
-            Подтянутое тело
-            <p style="color: rgba(53, 150, 237, 1)">за месяц</p>
+            Подтянутое тело<span style="color: rgba(53, 150, 237, 1)"> за месяц</span>
             тренировок
           </h1>
           <p class="section-text">
-            Программа тренировки включает в&nbsp;себя разнообразные упражнения,
-            направленные на&nbsp;развитие силы и&nbsp;мышечного&nbsp;тонуса.
+            Программа тренировки включает в себя разнообразные упражнения,
+            направленные на развитие силы и&nbsp;мышечного&nbsp;тонуса.
           </p>
           <a href="#" class="button">Посмотреть программу</a>
         </div>
@@ -148,7 +147,12 @@
       <div class="container-section-faq">
         <h2 class="section-title-h2 mg">Вопросы и ответы</h2>
         <div class="container-faq">
-          <img src="./content/картинка.jpg" alt="" width="492" height="531" />
+          <img
+            src="./content/картинка.jpg"
+            alt=""
+            width="492"
+            height="531"
+          />
           <div class="faq">
             <details name="fag">
               <summary class="summary-title">
@@ -192,7 +196,7 @@
             </details>
             <details name="fag" open>
               <summary class="summary-title">
-                Возможно ли переоформить мою клубную карту на другого человека?
+                Возможно ли переоформить моюклубную карту на&nbsp;другого&nbsp;человека?
               </summary>
               <p class="section-text">
                 Наш сайт по к интернет-эквайрингу, и вы можете оплатить товар
@@ -206,20 +210,29 @@
     </section>
     <!-- --------------------------footer--------------------------- -->
     <footer class="footer">
-      <div class="container-footer">
-        <div class="logo"><img src="./content/logo.svg" alt="Логотип" /></div>
-        <div class="list-contacts">
-          <ul class="footer-list">
-            <a href="#" class="link-contact">Клубы</a>
-            <a href="#" class="link-contact">Тренировки</a>
-            <a href="#" class="link-contact">Абонементы</a>
-            <a href="#" class="link-contact">Программа лояльности</a>
-            <a href="#" class="link-contact">Контакты</a>
-          </ul>
+      <div class="footer-top">
+        <div class="container">
+          <a class="footer-logo" href="/">
+            <img
+              src="./content/logo.svg"
+              width="84"
+              height="45"
+              alt="Логотип Fit Studio"
+            />
+          </a>
+          <nav class="menu">
+            <ul>
+              <li><a href="#">Клубы</a></li>
+              <li><a href="#">Тренировки</a></li>
+              <li><a href="#">Абонементы</a></li>
+              <li><a href="#">Программа лояльности</a></li>
+              <li><a href="#">Контакты</a></li>
+            </ul>
+          </nav>
         </div>
-        <div class="copyright-text">
-          <p>&copy; Copyright. Все права защищены</p>
-        </div>
+      </div>
+      <div class="container">
+        <p class="copyright">&copy; Copyright. Все права защищены</p>
       </div>
     </footer>
   </body>

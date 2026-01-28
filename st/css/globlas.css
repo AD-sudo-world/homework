@@ -5,12 +5,15 @@ html {
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 a {
   text-decoration: none;
 }
-
+body{
+  min-width: 375px;
+}
 h1,
 h2,
 h3,
@@ -22,4 +25,22 @@ a:focus-visible{
 }
 a:hover{
   color: rgb(190, 38, 193);
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+video{
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+img[src$=".svg"] {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%; 
 }

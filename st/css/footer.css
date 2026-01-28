@@ -1,46 +1,69 @@
 .footer {
-  width: 100%;
-}
-
-.container-footer {
-  width: 100%;
-  max-width: 100%;
-  margin: 120px auto 0;
-  background: linear-gradient(
+  padding: 60px 0 40px;
+  margin-top: auto;
+  background-image: linear-gradient(
     90deg,
     rgba(73, 169, 255, 0.2) 0%,
     rgba(252, 124, 217, 0.2) 100%
   );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.logo {
-  padding-top: 60px;
-}
-.list-contacts {
-  font-family: Ubuntu, sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-}
-.footer-list {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-  padding: 40px 0;
-}
-.link-contact {
-  color: rgba(83, 87, 85, 1);
+  text-align: center;
 }
 
-.copyright-text {
-  display: block;
-  width: 100%;
-  border-top: 1px solid rgba(211, 203, 217, 1);
-  text-align: center;
-  color: rgba(133, 142, 138, 1);
+.footer-top {
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #d3cbd9;
+}
+
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 40px;
+}
+
+.menu ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: #535755;
+  transition: color 0.2s;
+}
+
+.menu a:hover {
+  color: #3596ed;
+}
+
+.copyright {
   font-weight: 400;
   font-size: 14px;
-  font-family: Ubuntu, sans-serif;
-  padding: 40px 0;
+  letter-spacing: 0.04em;
+  color: #858e8a;
+}
+
+
+/* 1200px
+992px
+768px
+576px
+375px */
+
+@media (width <= 768px){
+  .menu ul{
+    flex-direction: column;
+    gap: 25px;
+  }
+}
+@media (width <= 576px){
+  .footer{
+padding: 40px 0 40px;
+  }
 }

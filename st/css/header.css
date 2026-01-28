@@ -1,9 +1,9 @@
-.header{
-  display: flex;
-  justify-content: center;
+.header {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 .container-header {
-  max-width: 1220px;
   width: 100%;
   min-height: 105px;
   border-bottom: 1px solid rgba(211, 203, 217, 1);
@@ -13,10 +13,10 @@
   align-items: center;
   margin-bottom: 80px;
 }
-.logo-header {
+/* .logo-header {
   width: 84px;
   height: 48px;
-}
+} */
 .contacts {
   width: 240px;
   height: 45px;
@@ -39,4 +39,24 @@
   font-weight: 500;
   font-size: 18px;
   color: rgba(44, 51, 47, 1);
+}
+@media (width <= 992px) {
+  .container-header {
+    margin-bottom: 50px;
+    min-height: 90px;
+  }
+  .header {
+    max-width: 768px;
+  }
+  .p-header {
+    font-size: 12px;
+  }
+  .tel-header {
+    font-size: 14px;
+  }
+}
+@media (width <= 768px) {
+  .header {
+    max-width: 576px;
+  }
 }
