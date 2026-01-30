@@ -6,12 +6,12 @@ html {
 *::before,
 *::after {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 a {
   text-decoration: none;
 }
-body{
+body {
   min-width: 375px;
 }
 h1,
@@ -20,27 +20,41 @@ h3,
 p {
   margin: 0;
 }
-a:focus-visible{
-  outline: 1px solid rgb(0, 0, 0);;
+a:focus-visible {
+  outline: 1px solid rgb(0, 0, 0);
 }
-a:hover{
+a:hover {
   color: rgb(190, 38, 193);
 }
 
-img{
+img {
   max-width: 100%;
   height: auto;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
-video{
+video {
   max-width: 100%;
   height: auto;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 img[src$=".svg"] {
   width: auto !important;
   height: auto !important;
-  max-width: 100%; 
+  max-width: 100%;
+}
+.section-title-h2 {
+  font-family: Oswald, sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 115%;
+  text-transform: uppercase;
+  color: rgba(44, 51, 47, 1);
+}
+.section {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-bottom: 140px;
 }
