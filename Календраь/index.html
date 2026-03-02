@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лунный календарь обучения · Март 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f1f4fa;
+            background-image: radial-gradient(circle at 10% 20%, rgba(186, 211, 255, 0.2) 0%, transparent 30%),
+                              radial-gradient(circle at 90% 80%, rgba(147, 129, 255, 0.15) 0%, transparent 35%);
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .calendar-container {
+            max-width: 1300px;
+            width: 100%;
+        }
+
+        /* header */
+        .hero {
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-section h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #1B2B4E, #2C3F66);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .title-section .march {
+            font-size: 1.2rem;
+            color: #4A5B7A;
+            font-weight: 400;
+            margin-top: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .moon-badge {
+            background: #e0e8ff;
+            padding: 0.35rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1e2b44;
+            box-shadow: 0 4px 10px rgba(0,20,50,0.05);
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2rem;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(4px);
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.7);
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.1);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1d2b41;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 4px;
+        }
+        .dot-eng { background: #2B59C3; }
+        .dot-html { background: #DD4B25; }
+        .dot-rest { background: #8A9BB5; }
+        .dot-start { background: #F4B740; }
+        .dot-bad { background: #D64550; }
+
+        /* фазы / подписи */
+        .phase-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            background: #dce3f0;
+            color: #1f2b44;
+        }
+
+        .phase-wax { background: #C9E3FF; color: #004080; }   /* растущая */
+        .phase-wane { background: #E0D9FF; color: #3E2C6D; }  /* убывающая */
+        .phase-full { background: #1F3162; color: white; }
+        .phase-new { background: #1B1B3A; color: white; }
+        .phase-quarter { background: #A5B8D9; color: #121f3f; }
+
+        .badge-favorable {
+            background: #F4B740;
+            color: #1F2A44;
+            font-weight: 700;
+            font-size: 0.7rem;
+            border-radius: 16px;
+            padding: 0.15rem 0.7rem;
+            display: inline-block;
+            box-shadow: 0 2px 8px #F4B74080;
+            margin-left: 6px;
+        }
+        .badge-unfavorable {
+            background: #D64550;
+            color: white;
+            font-weight: 700;
+            font-size: 0.7rem;
+            border-radius: 16px;
+            padding: 0.15rem 0.7rem;
+            display: inline-block;
+            margin-left: 6px;
+        }
+
+        /* сетка */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+            margin: 1.5rem 0 3rem;
+        }
+
+        .day-card {
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 1rem 0.8rem 0.9rem;
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 15px 30px -15px rgba(28, 42, 68, 0.2);
+            transition: all 0.15s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .day-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.9);
+            border-color: #b9cbff;
+            box-shadow: 0 22px 35px -16px #1b2f55;
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .day-number {
+            font-size: 1.3rem;
+            font-weight: 600;
+            background: #ffffffb0;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            color: #15273f;
+        }
+
+        .weekday {
+            font-size: 0.8rem;
+            color: #4e6188;
+            text-transform: uppercase;
+        }
+
+        .moon-info {
+            font-size: 0.7rem;
+            line-height: 1.3;
+            background: #f0f4fe;
+            border-radius: 14px;
+            padding: 0.4rem 0.6rem;
+            margin: 0.4rem 0 0.6rem;
+        }
+
+        .lunar-day {
+            font-weight: 600;
+            color: #222f4a;
+        }
+
+        .zodiac {
+            font-style: italic;
+            color: #415683;
+            font-size: 0.7rem;
+        }
+
+        .subject-row {
+            font-size: 0.75rem;
+            padding: 0.3rem 0 0.3rem 1rem;
+            position: relative;
+            line-height: 1.3;
+            margin: 0.2rem 0;
+        }
+
+        .subject-row.english::before {
+            content: "🇬🇧";
+            position: absolute;
+            left: -2px;
+            top: 2px;
+            font-size: 0.7rem;
+        }
+        .subject-row.html::before {
+            content: "🌐";
+            position: absolute;
+            left: -2px;
+            top: 2px;
+            font-size: 0.7rem;
+        }
+        .subject-row.rest::before {
+            content: "🌙";
+            position: absolute;
+            left: -2px;
+            top: 2px;
+            font-size: 0.7rem;
+        }
+
+        .strong {
+            font-weight: 700;
+            color: #0A1E3F;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            background: #1f2b40e0;
+            backdrop-filter: blur(6px);
+            border-radius: 48px;
+            padding: 1.5rem 2.2rem;
+            color: #eaeef7;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #ffffff30;
+            font-size: 0.95rem;
+        }
+
+        .footer-note a {
+            color: #ffd966;
+            text-decoration: none;
+            border-bottom: 1px dotted;
+        }
+
+        @media (max-width: 1000px) {
+            .calendar-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+        @media (max-width: 700px) {
+            .calendar-grid { grid-template-columns: repeat(3, 1fr); }
+            .hero { flex-direction: column; align-items: start; gap: 1rem; }
+        }
+        @media (max-width: 450px) {
+            .calendar-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* для компактности */
+        .small-notes {
+            font-size: 0.68rem;
+            color: #4d5f83;
+            margin-top: 0.4rem;
+            border-top: 1px dotted #cdd9f0;
+            padding-top: 0.3rem;
+        }
+
+        .icon-badge {
+            display: inline-flex;
+            gap: 0.2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar-container">
+        <!-- шапка -->
+        <div class="hero">
+            <div class="title-section">
+                <h1>🗓️ Лунная памятка · Март 2026</h1>
+                <div class="march">
+                    <span>английский (Murphy) + вёрстка (поурочно)</span>
+                    <span class="moon-badge">🌒 растущая · 🌘 убывающая</span>
+                </div>
+            </div>
+            <div class="legend">
+                <div class="legend-item"><span class="legend-dot dot-eng"></span> Английский</div>
+                <div class="legend-item"><span class="legend-dot dot-html"></span> Вёрстка / JS</div>
+                <div class="legend-item"><span class="legend-dot dot-rest"></span> Отдых / повтор</div>
+                <div class="legend-item"><span class="legend-dot dot-start"></span> ⚡ благоприятный</div>
+                <div class="legend-item"><span class="legend-dot dot-bad"></span> ⚠️ неблагоприятный</div>
+            </div>
+        </div>
+
+        <!-- сетка дней 1-31 марта -->
+        <div class="calendar-grid">
+            <!-- 1 марта вс -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">1</span> <span class="weekday">вс</span></div>
+                <div class="moon-info"><span class="lunar-day">12-13 л.д.</span> <span class="zodiac">Лев</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row rest">😴 англ: музыка</div>
+                <div class="subject-row rest">😴 вёрстка: вдохновение</div>
+                <div class="small-notes">—</div>
+            </div>
+            <!-- 2 марта пн -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">2</span> <span class="weekday">пн</span></div>
+                <div class="moon-info"><span class="lunar-day">13-14 л.д.</span> <span class="zodiac">Дева</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row english">🔧 повторение</div>
+                <div class="subject-row html">🔧 доработка проектов</div>
+            </div>
+            <!-- 3 марта вт ПОЛНОЛУНИЕ затмение -->
+            <div class="day-card" style="border-left: 3px solid #D64550;">
+                <div class="day-header"><span class="day-number">3</span> <span class="weekday">вт</span></div>
+                <div class="moon-info"><span class="lunar-day">14-15 л.д.</span> <span class="zodiac">Дева</span> <span class="phase-full phase-tag">ПОЛНОЛУНИЕ</span></div>
+                <span class="badge-unfavorable">⚠️ затмение</span>
+                <div class="subject-row rest">😴 ПОЛНЫЙ ОТДЫХ</div>
+                <div class="subject-row rest">😴 никакого кода</div>
+            </div>
+            <!-- 4 марта ср -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">4</span> <span class="weekday">ср</span></div>
+                <div class="moon-info"><span class="lunar-day">15-16 л.д.</span> <span class="zodiac">Весы</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">🔧 разбор предложений</div>
+                <div class="subject-row html">✍️ урок 118 (Hero)</div>
+            </div>
+            <!-- 5 марта чт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">5</span> <span class="weekday">чт</span></div>
+                <div class="moon-info"><span class="lunar-day">16-17 л.д.</span> <span class="zodiac">Весы</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">✍️ повторение времён</div>
+                <div class="subject-row html">🔧 урок 119 (адаптация Hero)</div>
+            </div>
+            <!-- 6 марта пт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">6</span> <span class="weekday">пт</span></div>
+                <div class="moon-info"><span class="lunar-day">17-18 л.д.</span> <span class="zodiac">Весы</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">📚 словарь</div>
+                <div class="subject-row html">✍️ урок 120 (ДЗ Hero)</div>
+            </div>
+            <!-- 7 марта сб -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">7</span> <span class="weekday">сб</span></div>
+                <div class="moon-info"><span class="lunar-day">18-19 л.д.</span> <span class="zodiac">Скорпион</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">📚 Unit 1 (am/is/are)</div>
+                <div class="subject-row html">📚 урок 121 (Air Mag)</div>
+            </div>
+            <!-- 8 марта вс БЛАГОПРИЯТНЫЙ -->
+            <div class="day-card" style="background: #FFF9E6; border: 1px solid #F4B740;">
+                <div class="day-header"><span class="day-number">8</span> <span class="weekday">вс</span></div>
+                <div class="moon-info"><span class="lunar-day">19 л.д.</span> <span class="zodiac">Скорпион</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <span class="badge-favorable">⚡ БЛАГОПРИЯТНЫЙ</span>
+                <div class="subject-row english strong">⚡ Unit 2 (I am doing) СТАРТ</div>
+                <div class="subject-row html strong">⚡ урок 122 (общие улучшения)</div>
+            </div>
+            <!-- 9 марта пн -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">9</span> <span class="weekday">пн</span></div>
+                <div class="moon-info"><span class="lunar-day">19-20 л.д.</span> <span class="zodiac">Стрелец</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">✍️ упражнения Unit 1-2</div>
+                <div class="subject-row html">✍️ урок 123 (ДЗ Air Mag)</div>
+            </div>
+            <!-- 10 марта вт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">10</span> <span class="weekday">вт</span></div>
+                <div class="moon-info"><span class="lunar-day">20-21 л.д.</span> <span class="zodiac">Стрелец</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">📚 Unit 3 (I am doing vs I do)</div>
+                <div class="subject-row html">📚 урок 124 (Размеры ч.1)</div>
+            </div>
+            <!-- 11 марта ср последняя четверть -->
+            <div class="day-card" style="border-left: 3px solid #D64550;">
+                <div class="day-header"><span class="day-number">11</span> <span class="weekday">ср</span></div>
+                <div class="moon-info"><span class="lunar-day">21-22 л.д.</span> <span class="zodiac">Стрелец</span> <span class="phase-quarter phase-tag">ПОСЛ. ЧЕТВ.</span></div>
+                <span class="badge-unfavorable">⚠️ неблагоприятный</span>
+                <div class="subject-row rest">😴 отдых / сериал</div>
+                <div class="subject-row rest">😴 отдых</div>
+            </div>
+            <!-- 12 марта чт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">12</span> <span class="weekday">чт</span></div>
+                <div class="moon-info"><span class="lunar-day">22-23 л.д.</span> <span class="zodiac">Козерог</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">🔧 повторение Unit 1-3</div>
+                <div class="subject-row html">✍️ урок 125 (Размеры ч.2)</div>
+            </div>
+            <!-- 13 марта пт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">13</span> <span class="weekday">пт</span></div>
+                <div class="moon-info"><span class="lunar-day">23-24 л.д.</span> <span class="zodiac">Козерог</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">✍️ все упражнения к Unit 1-3</div>
+                <div class="subject-row html">🔧 урок 126 (доработка Размеры)</div>
+            </div>
+            <!-- 14 марта сб БЛАГОПРИЯТНЫЙ -->
+            <div class="day-card" style="background: #FFF9E6;">
+                <div class="day-header"><span class="day-number">14</span> <span class="weekday">сб</span></div>
+                <div class="moon-info"><span class="lunar-day">24-25 л.д.</span> <span class="zodiac">Водолей</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <span class="badge-favorable">⚡ БЛАГОПРИЯТНЫЙ</span>
+                <div class="subject-row english strong">⚡ Unit 4 (I have) СТАРТ</div>
+                <div class="subject-row html strong">⚡ урок 127 (ДЗ Размеры)</div>
+            </div>
+            <!-- 15 марта вс -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">15</span> <span class="weekday">вс</span></div>
+                <div class="moon-info"><span class="lunar-day">25-26 л.д.</span> <span class="zodiac">Водолей</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">📚 Unit 4 упражнения</div>
+                <div class="subject-row html">📚 урок 128 (Характеристики)</div>
+            </div>
+            <!-- 16 марта пн -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">16</span> <span class="weekday">пн</span></div>
+                <div class="moon-info"><span class="lunar-day">26-27 л.д.</span> <span class="zodiac">Водолей</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">🔧 разбор ошибок</div>
+                <div class="subject-row html">📚 урок 129 (Топ Модели)</div>
+            </div>
+            <!-- 17 марта вт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">17</span> <span class="weekday">вт</span></div>
+                <div class="moon-info"><span class="lunar-day">27-28 л.д.</span> <span class="zodiac">Рыбы</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row rest">😴 творческий отдых</div>
+                <div class="subject-row rest">😴 поиск идей</div>
+            </div>
+            <!-- 18 марта ср -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">18</span> <span class="weekday">ср</span></div>
+                <div class="moon-info"><span class="lunar-day">28-29 л.д.</span> <span class="zodiac">Рыбы</span> <span class="phase-wane phase-tag">убыв.</span></div>
+                <div class="subject-row english">🔧 подготовка</div>
+                <div class="subject-row html">🔧 урок 130 (ДЗ Топ Модели)</div>
+            </div>
+            <!-- 19 марта чт НОВОЛУНИЕ -->
+            <div class="day-card" style="border-left: 3px solid #D64550; background:#f0f2fa;">
+                <div class="day-header"><span class="day-number">19</span> <span class="weekday">чт</span></div>
+                <div class="moon-info"><span class="lunar-day">29-1-2 л.д.</span> <span class="zodiac">Овен</span> <span class="phase-new phase-tag">НОВОЛУНИЕ</span></div>
+                <span class="badge-unfavorable">⚠️ неблагоприятный</span>
+                <div class="subject-row rest">😴 ПОЛНЫЙ ОТДЫХ</div>
+                <div class="subject-row rest">😴 разгрузка</div>
+            </div>
+            <!-- 20 марта пт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">20</span> <span class="weekday">пт</span></div>
+                <div class="moon-info"><span class="lunar-day">2-3 л.д.</span> <span class="zodiac">Овен</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row english">🚀📚 Unit 5 (I have done)</div>
+                <div class="subject-row html">🚀📚 урок 131 (Подвал)</div>
+            </div>
+            <!-- 21 марта сб -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">21</span> <span class="weekday">сб</span></div>
+                <div class="moon-info"><span class="lunar-day">3-4 л.д.</span> <span class="zodiac">Телец</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row english">📚 Unit 5 упражнения</div>
+                <div class="subject-row html">📚 урок 132 (модальное окно)</div>
+            </div>
+            <!-- 22 марта вс -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">22</span> <span class="weekday">вс</span></div>
+                <div class="moon-info"><span class="lunar-day">4-5 л.д.</span> <span class="zodiac">Телец</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row english">✍️ прописывание примеров</div>
+                <div class="subject-row html">✍️ урок 133 (ДЗ заключение)</div>
+            </div>
+            <!-- 23 марта пн БЛАГОПРИЯТНЫЙ -->
+            <div class="day-card" style="background: #FFF9E6;">
+                <div class="day-header"><span class="day-number">23</span> <span class="weekday">пн</span></div>
+                <div class="moon-info"><span class="lunar-day">5-6 л.д.</span> <span class="zodiac">Близнецы</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <span class="badge-favorable">⚡ БЛАГОПРИЯТНЫЙ</span>
+                <div class="subject-row english strong">⚡ Unit 6 (Past) СТАРТ</div>
+                <div class="subject-row html strong">⚡ урок 134 (Заключение)</div>
+            </div>
+            <!-- 24 марта вт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">24</span> <span class="weekday">вт</span></div>
+                <div class="moon-info"><span class="lunar-day">6-7 л.д.</span> <span class="zodiac">Близнецы</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row english">📚 Unit 6 упражнения</div>
+                <div class="subject-row html">🎯 урок 135 (Дипломный проект) 🎓</div>
+            </div>
+            <!-- 25 марта ср первая четверть -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">25</span> <span class="weekday">ср</span></div>
+                <div class="moon-info"><span class="lunar-day">7-8 л.д.</span> <span class="zodiac">Рак</span> <span class="phase-quarter phase-tag">ПЕРВАЯ ЧЕТВ.</span></div>
+                <span class="badge-unfavorable">⚠️</span>
+                <div class="subject-row english">📚 Unit 7 (Past vs Present)</div>
+                <div class="subject-row html">🚀 **МОДУЛЬ 3. JS**</div>
+            </div>
+            <!-- 26 марта чт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">26</span> <span class="weekday">чт</span></div>
+                <div class="moon-info"><span class="lunar-day">8-9 л.д.</span> <span class="zodiac">Рак</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row english">✍️ Unit 7 упражнения</div>
+                <div class="subject-row html">📚 урок 1-2 (JS введение)</div>
+            </div>
+            <!-- 27 марта пт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">27</span> <span class="weekday">пт</span></div>
+                <div class="moon-info"><span class="lunar-day">9-10 л.д.</span> <span class="zodiac">Лев</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row english">🎯 творческое задание</div>
+                <div class="subject-row html">📚 урок 3-4 (переменные)</div>
+            </div>
+            <!-- 28 марта сб БЛАГОПРИЯТНЫЙ -->
+            <div class="day-card" style="background: #FFF9E6;">
+                <div class="day-header"><span class="day-number">28</span> <span class="weekday">сб</span></div>
+                <div class="moon-info"><span class="lunar-day">10-11 л.д.</span> <span class="zodiac">Лев</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <span class="badge-favorable">⚡ БЛАГОПРИЯТНЫЙ</span>
+                <div class="subject-row english strong">⚡ Unit 8 (Future) СТАРТ</div>
+                <div class="subject-row html strong">⚡ урок 5-6 (математика, типы)</div>
+            </div>
+            <!-- 29 марта вс -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">29</span> <span class="weekday">вс</span></div>
+                <div class="moon-info"><span class="lunar-day">11-12 л.д.</span> <span class="zodiac">Дева</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row english">🔧 детальный разбор</div>
+                <div class="subject-row html">📚 урок 7 (приведение типов)</div>
+            </div>
+            <!-- 30 марта пн -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">30</span> <span class="weekday">пн</span></div>
+                <div class="moon-info"><span class="lunar-day">12-13 л.д.</span> <span class="zodiac">Дева</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row english">📚 Unit 8 упражнения</div>
+                <div class="subject-row html">✍️ урок 8-9 (тест/практика)</div>
+            </div>
+            <!-- 31 марта вт -->
+            <div class="day-card">
+                <div class="day-header"><span class="day-number">31</span> <span class="weekday">вт</span></div>
+                <div class="moon-info"><span class="lunar-day">13-14 л.д.</span> <span class="zodiac">Дева</span> <span class="phase-wax phase-tag">раст.</span></div>
+                <div class="subject-row english">🔧 систематизация</div>
+                <div class="subject-row html">✍️ урок 10 (ДЗ переменные)</div>
+            </div>
+        </div>
+
+        <!-- нижняя часть с итогами -->
+        <div class="footer-note">
+            <div>🇬🇧 <strong>Английский Murphy:</strong> Unit 1–8 пройдено · старты 8,14,23,28</div>
+            <div>🌐 <strong>Вёрстка:</strong> уроки 118–135 (проект + диплом) · JS модуль 3: 1–10</div>
+            <div>📅 <a href="#">⚡ Полная версия на апрель по запросу</a></div>
+        </div>
+
+        <!-- пояснение условных обозначений -->
+        <div style="margin-top: 1.5rem; font-size: 0.8rem; color: #345; text-align: center; background: #ffffffb0; padding: 0.7rem; border-radius: 100px; backdrop-filter: blur(2px);">
+            📘 — English (Grammar in Use) · 🌐 — верстка / JS · 😴 — отдых · ⚡ благоприятный · ⚠️ неблагоприятный (затмения, четверти, новолуние)
+        </div>
+    </div>
+</body>
+</html>
